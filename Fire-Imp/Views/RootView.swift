@@ -19,17 +19,15 @@ import SwiftUI
 struct RootView: View {
     @StateObject var vm = UserManager.shared
     @StateObject var session = TaskManager.shared
-    @State var navigationService: NavigationService = NavigationService()
     @StateObject var alertService = AlertService.shared
     
     var body: some View {
         Group {
             if vm.isOnboarding == false {
-                
+                HomeView()
             } else {
                 OnboardingView()
             }
-            
         } //: ZStack
         .background(Color.bg100)
         .fullScreenCover(isPresented: .init(
@@ -46,7 +44,6 @@ struct RootView: View {
                     }
                     , alignment: .top)
         }
-        .environment(navigationService)
     } //: Body
     
 

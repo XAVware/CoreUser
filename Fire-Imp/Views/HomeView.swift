@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
-    @Environment(NavigationService.self) var navigationService
+    @State var navigationService: NavigationService = NavigationService()
     
     var body: some View {
-        @Bindable var navigationService = navigationService
         NavigationStack(path: $navigationService.path) {
-            HomeView()
+            Text("Home")
                 .navigationDestination(for: NavPath.self, destination: { getDestination(for: $0) })
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
@@ -26,8 +25,8 @@ struct HomeView: View {
                 }
                 .navigationTitle("Home")
         } //: Navigation Stack
-        .background(.bg)
-        .defaultAppStorage(.standard)
+        .background(.bg100)
+        .environment(navigationService)
     } //: Body
     
     @ViewBuilder
@@ -35,6 +34,7 @@ struct HomeView: View {
         switch path {
         case .menuView: MenuView()
         case .profileView: ProfileView()
+        case .settings: SettingsView()
         default: Text("Oops, something went wrong. Please close the app and try again.")
         }
     }

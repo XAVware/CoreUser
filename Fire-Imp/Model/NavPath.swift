@@ -15,4 +15,5 @@ enum NavPath: Identifiable, Hashable {
     case homepage
     case menuView
     case profileView
+    case settings
 }

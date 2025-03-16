@@ -11,9 +11,6 @@ struct LoadingView: View {
     var body: some View {
         VStack(spacing: 32) {
             Text("Loading...")
-//                .font(.custom("Marker Felt", size: 24))
-//                .foregroundStyle(K.primaryColor)
-            
             ProgressView()
                 .scaleEffect(1.2)
         }

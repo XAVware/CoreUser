@@ -82,7 +82,7 @@ struct SignUpView: View {
                     .padding(.horizontal)
                     .frame(maxWidth: .infinity, maxHeight: 32)
             }
-            .modifier(TertiaryButtonMod())
+            .buttonStyle(.borderless)
         } //: VStack
         .navigationTitle("Sign up")
         .tint(.accent)

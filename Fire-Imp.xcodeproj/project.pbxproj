@@ -14,6 +14,12 @@
 		9405E9992D865F5700046B1A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9405E9982D865F5700046B1A /* .gitignore */; };
 		9405E9A62D86636400046B1A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9405E9A52D86636400046B1A /* FirebaseAuth */; };
 		9405E9A82D86636400046B1A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9405E9A72D86636400046B1A /* FirebaseFirestore */; };
+		9405E9BC2D8673A200046B1A /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9405E9B42D8673A200046B1A /* Setting.swift */; };
+		9405E9BD2D8673A200046B1A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9405E9B32D8673A200046B1A /* SettingsView.swift */; };
+		9405E9BE2D8673A200046B1A /* SettingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9405E9B52D8673A200046B1A /* SettingKey.swift */; };
+		9405E9BF2D8673A200046B1A /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9405E9B82D8673A200046B1A /* MenuSection.swift */; };
+		9405E9C22D8673A200046B1A /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9405E9B92D8673A200046B1A /* MenuItem.swift */; };
+		9405E9C32D8673A200046B1A /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9405E9BB2D8673A200046B1A /* SettingsManager.swift */; };
 		940C96432BFD40E600A0BEAF /* Fire_ImpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96422BFD40E600A0BEAF /* Fire_ImpApp.swift */; };
 		940C96472BFD40E700A0BEAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 940C96462BFD40E700A0BEAF /* Assets.xcassets */; };
 		940C964A2BFD40E700A0BEAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 940C96492BFD40E700A0BEAF /* Preview Assets.xcassets */; };
@@ -43,7 +49,6 @@
 		940C96BC2BFD47F500A0BEAF /* SubViewStyleMod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96BB2BFD47F500A0BEAF /* SubViewStyleMod.swift */; };
 		940C96BE2BFD494100A0BEAF /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96BD2BFD494100A0BEAF /* OnboardingView.swift */; };
 		940C96C02BFD4A4200A0BEAF /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96BF2BFD4A4200A0BEAF /* MenuView.swift */; };
-		940C96C22BFD4C9800A0BEAF /* NavToolbarMod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96C12BFD4C9800A0BEAF /* NavToolbarMod.swift */; };
 		94FA6CE62C6EDCF9001D3CA8 /* FireImpArchitecture.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 94FA6CE52C6EDCF9001D3CA8 /* FireImpArchitecture.pdf */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +58,12 @@
 		9405E97B2D86550800046B1A /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		9405E97D2D86556300046B1A /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		9405E9982D865F5700046B1A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		9405E9B32D8673A200046B1A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9405E9B42D8673A200046B1A /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		9405E9B52D8673A200046B1A /* SettingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingKey.swift; sourceTree = "<group>"; };
+		9405E9B82D8673A200046B1A /* MenuSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = "<group>"; };
+		9405E9B92D8673A200046B1A /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		9405E9BB2D8673A200046B1A /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		940C963F2BFD40E600A0BEAF /* Fire-Imp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fire-Imp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		940C96422BFD40E600A0BEAF /* Fire_ImpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fire_ImpApp.swift; sourceTree = "<group>"; };
 		940C96462BFD40E700A0BEAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,7 +95,6 @@
 		940C96BB2BFD47F500A0BEAF /* SubViewStyleMod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewStyleMod.swift; sourceTree = "<group>"; };
 		940C96BD2BFD494100A0BEAF /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		940C96BF2BFD4A4200A0BEAF /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		940C96C12BFD4C9800A0BEAF /* NavToolbarMod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavToolbarMod.swift; sourceTree = "<group>"; };
 		94FA6CE52C6EDCF9001D3CA8 /* FireImpArchitecture.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FireImpArchitecture.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +111,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9405E9BA2D8673A200046B1A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9405E9B32D8673A200046B1A /* SettingsView.swift */,
+				9405E9B42D8673A200046B1A /* Setting.swift */,
+				9405E9BB2D8673A200046B1A /* SettingsManager.swift */,
+				9405E9B52D8673A200046B1A /* SettingKey.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		9405E9C42D86774700046B1A /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				9405E9B82D8673A200046B1A /* MenuSection.swift */,
+				9405E9B92D8673A200046B1A /* MenuItem.swift */,
+				940C96BF2BFD4A4200A0BEAF /* MenuView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		940C96362BFD40E600A0BEAF = {
 			isa = PBXGroup;
 			children = (
@@ -200,13 +231,13 @@
 		940C96CD2BFD596C00A0BEAF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				940C965C2BFD426300A0BEAF /* Profile */,
 				940C965D2BFD426300A0BEAF /* AuthViewCluster.swift */,
 				940C965E2BFD426300A0BEAF /* LoginView.swift */,
 				940C965F2BFD426300A0BEAF /* ResetPasswordView.swift */,
 				940C96602BFD426300A0BEAF /* SignUpView.swift */,
-				940C96BF2BFD4A4200A0BEAF /* MenuView.swift */,
-				940C96B92BFD478B00A0BEAF /* LoadingView.swift */,
+				9405E9C42D86774700046B1A /* Menu */,
+				940C965C2BFD426300A0BEAF /* Profile */,
+				9405E9BA2D8673A200046B1A /* Settings */,
 				940C96BD2BFD494100A0BEAF /* OnboardingView.swift */,
 				940C96B52BFD477900A0BEAF /* HomeView.swift */,
 				940C96542BFD426300A0BEAF /* RootView.swift */,
@@ -217,6 +248,7 @@
 		94FA6CDD2C6DACFF001D3CA8 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				940C96B92BFD478B00A0BEAF /* LoadingView.swift */,
 				940C96A22BFD443F00A0BEAF /* ThemeField.swift */,
 			);
 			path = Components;
@@ -226,7 +258,6 @@
 			isa = PBXGroup;
 			children = (
 				940C96B32BFD469800A0BEAF /* UIColor+Ext.swift */,
-				940C96C12BFD4C9800A0BEAF /* NavToolbarMod.swift */,
 				940C96AF2BFD45EB00A0BEAF /* ButtonMods.swift */,
 				940C96BB2BFD47F500A0BEAF /* SubViewStyleMod.swift */,
 			);
@@ -312,7 +343,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				940C96C22BFD4C9800A0BEAF /* NavToolbarMod.swift in Sources */,
 				940C96642BFD426300A0BEAF /* TaskManager.swift in Sources */,
 				940C96432BFD40E600A0BEAF /* Fire_ImpApp.swift in Sources */,
 				940C96B82BFD477900A0BEAF /* AlertView.swift in Sources */,
@@ -325,6 +355,12 @@
 				940C96682BFD426300A0BEAF /* AppAuthError.swift in Sources */,
 				940C96A42BFD443F00A0BEAF /* AlertManager.swift in Sources */,
 				940C96702BFD426300A0BEAF /* LoginView.swift in Sources */,
+				9405E9BC2D8673A200046B1A /* Setting.swift in Sources */,
+				9405E9BD2D8673A200046B1A /* SettingsView.swift in Sources */,
+				9405E9BE2D8673A200046B1A /* SettingKey.swift in Sources */,
+				9405E9BF2D8673A200046B1A /* MenuSection.swift in Sources */,
+				9405E9C22D8673A200046B1A /* MenuItem.swift in Sources */,
+				9405E9C32D8673A200046B1A /* SettingsManager.swift in Sources */,
 				940C96B72BFD477900A0BEAF /* HomeView.swift in Sources */,
 				940C96672BFD426300A0BEAF /* RootView.swift in Sources */,
 				9405E9702D864EE800046B1A /* NavigationService.swift in Sources */,

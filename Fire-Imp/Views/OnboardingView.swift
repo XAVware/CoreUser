@@ -97,7 +97,7 @@ struct OnboardingView: View {
                 Text("Not Now")
                     .frame(maxWidth: .infinity)
             }
-            .modifier(TertiaryButtonMod())
+            .buttonStyle(.borderless)
             
         } //: VStack
         .padding()

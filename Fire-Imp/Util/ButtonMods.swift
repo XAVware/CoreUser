@@ -19,22 +19,3 @@ struct PrimaryButtonMod: ViewModifier {
             .padding()
     }
 }
-    
-struct SecondaryButtonMod: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .frame(maxWidth: 200, maxHeight: 36)
-            .font(.headline)
-            .controlSize(.regular)
-            .buttonBorderShape(.capsule)
-            .buttonStyle(.bordered)
-    }
-}
-
-struct TertiaryButtonMod: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .buttonStyle(.borderless)
-            .controlSize(.regular)
-    }
-}
