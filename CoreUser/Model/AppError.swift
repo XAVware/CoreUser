@@ -12,6 +12,7 @@ enum AppError: Error {
     case credentialAlreadyInUse
     case emailAlreadyInUse
     case emailChangeNeedsVerification
+    case errorSigningOut
     case invalidCredential
     case invalidEmail
     case invalidFirstName
@@ -38,6 +39,7 @@ enum AppError: Error {
         case .credentialAlreadyInUse:               return "Credential already in use"
         case .emailAlreadyInUse:                    return "An account already exists with this email."
         case .emailChangeNeedsVerification:         return "Email change needs verification"
+        case .errorSigningOut:                       return "There was an issue signing you out"
         case .invalidCredential:                    return "Invalid credentials"
         case .invalidEmail:                         return "Please enter a valid email."
         case .invalidFirstName:                     return "Please enter a valid first name."

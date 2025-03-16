@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ResetPasswordView: View {
-    @EnvironmentObject var vm: AuthViewClusterModel
+    @EnvironmentObject var vm: AuthViewModel
     @Binding private var email: String
     
     @FocusState private var focusField: FocusText?
@@ -35,37 +35,32 @@ struct ResetPasswordView: View {
             
             Spacer()
                         
-            Button {
-                TaskManager.shared.startLoading()
-                Task {
-                    try await vm.sendResetPasswordEmail(to: email)
-                    TaskManager.shared.stopLoading()
-                }
-            } label: {
-                Text("Send Reset Link")
-                    .modifier(PrimaryButtonMod())
-            }
+            Button("Send Reset Link", action: sendLinkTapped)
+                .modifier(PrimaryButtonMod())
             
             Spacer()
         } //: VStack
         .navigationBarBackButtonHidden(true)
         .navigationTitle("Reset password")
         .tint(.accent)
-        .toolbar(content: {
+        .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("", systemImage: "xmark") {
-                    vm.currentState = .loginEmail
+                    vm.changeState(to: .loginEmail)
                 }
             }
-        })
+        }
+    }
+    
+    private func sendLinkTapped() {
+        Task {
+            await vm.continueTapped(email: email)
+        }
     }
 }
 
-
-struct ResetPasswordView_Previews: PreviewProvider {
-    static var previews: some View {
-        ResetPasswordView(email: .constant(""))
-            .environmentObject(AuthViewClusterModel())
-            .padding()
-    }
+#Preview {
+    ResetPasswordView(email: .constant(""))
+        .environmentObject(AuthViewModel())
+        .padding()
 }

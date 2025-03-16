@@ -12,7 +12,7 @@ struct SignUpView: View {
     @State private var password = ""
     @State private var confirmPassword = ""
     @State private var showPassword = false
-    @EnvironmentObject var vm: AuthViewClusterModel
+    @EnvironmentObject var vm: AuthViewModel
     @FocusState private var focusField: FocusText?
     enum FocusText { case email, password, confirmPassword }
     
@@ -20,18 +20,9 @@ struct SignUpView: View {
         self._email = email
     }
     
-    private func createUser() {
-        TaskManager.shared.startLoading()
-        Task {
-            try await vm.createUser(withEmail: email, password: password)
-            TaskManager.shared.stopLoading()
-        }
-    }
-    
     var body: some View {
         VStack(spacing: 24) {
 
-            
             VStack(spacing: 16) {
                 ThemeField(placeholder: "Email", boundTo: $email, iconName: "envelope")
                     .keyboardType(.emailAddress)
@@ -44,7 +35,7 @@ struct SignUpView: View {
                         focusField = nil
                     }
                 
-                ThemeField(placeholder: "Password", boundTo: $password, iconName: "lock")                    
+                ThemeField(placeholder: "Password", boundTo: $password, iconName: "lock")
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
                     .submitLabel(.next)
@@ -64,36 +55,34 @@ struct SignUpView: View {
             } //: VStack
             .padding(.vertical)
             
-            Button {
-                createUser()
-            } label: {
-                Text("Create Account")
-                    .modifier(PrimaryButtonMod())
-            }
+            Button("Create Account", action: createUser)
+                .modifier(PrimaryButtonMod())
 
             Spacer()
             
             Divider()
-            
-            Button {
-                vm.currentState = .loginEmail
-            } label: {
-                Text("Back to sign in")
-                    .padding(.horizontal)
-                    .frame(maxWidth: .infinity, maxHeight: 32)
-            }
-            .buttonStyle(.borderless)
+            Button("Back to sign in", action: toSignInTapped)
+                .padding(.horizontal)
+                .frame(maxWidth: .infinity, maxHeight: 32)
+                .buttonStyle(.borderless)
         } //: VStack
         .navigationTitle("Sign up")
         .tint(.accent)
 
     } //: Body
+    
+    private func createUser() {
+        Task {
+            await vm.continueTapped(email: email, passwordSet: [password, confirmPassword])
+        }
+    }
+    
+    private func toSignInTapped() {
+        vm.changeState(to: .loginEmail)
+    }
 }
 
-struct SignUpView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUpView(email: .constant(""))
-            .environmentObject(AuthViewClusterModel())
-            .padding()
-    }
+#Preview {
+    SignUpView(email: .constant(""))
+        .environmentObject(AuthViewModel())
 }

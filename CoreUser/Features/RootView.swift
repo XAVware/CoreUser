@@ -34,7 +34,7 @@ struct RootView: View {
             get: { vm.currentUser == nil },
             set: { _ in }
         )) {
-            AuthViewCluster()
+            AuthView()
                 .overlay(session.isLoading ? LoadingView() : nil)
                 .overlay(
                     Group {

@@ -34,7 +34,7 @@
 		940C966C2BFD426300A0BEAF /* EditEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96592BFD426300A0BEAF /* EditEmailView.swift */; };
 		940C966D2BFD426300A0BEAF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C965A2BFD426300A0BEAF /* ProfileView.swift */; };
 		940C966E2BFD426300A0BEAF /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C965B2BFD426300A0BEAF /* ProfileViewModel.swift */; };
-		940C966F2BFD426300A0BEAF /* AuthViewCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C965D2BFD426300A0BEAF /* AuthViewCluster.swift */; };
+		940C966F2BFD426300A0BEAF /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C965D2BFD426300A0BEAF /* AuthView.swift */; };
 		940C96702BFD426300A0BEAF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C965E2BFD426300A0BEAF /* LoginView.swift */; };
 		940C96712BFD426300A0BEAF /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C965F2BFD426300A0BEAF /* ResetPasswordView.swift */; };
 		940C96722BFD426300A0BEAF /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96602BFD426300A0BEAF /* SignUpView.swift */; };
@@ -81,7 +81,7 @@
 		940C96592BFD426300A0BEAF /* EditEmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEmailView.swift; sourceTree = "<group>"; };
 		940C965A2BFD426300A0BEAF /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		940C965B2BFD426300A0BEAF /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		940C965D2BFD426300A0BEAF /* AuthViewCluster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewCluster.swift; sourceTree = "<group>"; };
+		940C965D2BFD426300A0BEAF /* AuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		940C965E2BFD426300A0BEAF /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		940C965F2BFD426300A0BEAF /* ResetPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		940C96602BFD426300A0BEAF /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		9405EA4D2D8698D800046B1A /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				940C965D2BFD426300A0BEAF /* AuthViewCluster.swift */,
+				940C965D2BFD426300A0BEAF /* AuthView.swift */,
 				940C965E2BFD426300A0BEAF /* LoginView.swift */,
 				940C965F2BFD426300A0BEAF /* ResetPasswordView.swift */,
 				940C96602BFD426300A0BEAF /* SignUpView.swift */,
@@ -377,7 +377,7 @@
 				940C96B72BFD477900A0BEAF /* HomeView.swift in Sources */,
 				940C96672BFD426300A0BEAF /* RootView.swift in Sources */,
 				9405E9702D864EE800046B1A /* NavigationService.swift in Sources */,
-				940C966F2BFD426300A0BEAF /* AuthViewCluster.swift in Sources */,
+				940C966F2BFD426300A0BEAF /* AuthView.swift in Sources */,
 				940C96722BFD426300A0BEAF /* SignUpView.swift in Sources */,
 				9405E9622D864D7500046B1A /* UserManager.swift in Sources */,
 				940C96BE2BFD494100A0BEAF /* OnboardingView.swift in Sources */,

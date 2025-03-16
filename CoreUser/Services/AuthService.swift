@@ -43,7 +43,7 @@ final class AuthService {
         do {
             try await Auth.auth().sendPasswordReset(withEmail: email)
             alertService.pushAlert(.success, "Email sent. Please check your inbox.")
-        }  catch {
+        } catch {
             throw authError(error)
         }
     }
@@ -75,7 +75,8 @@ final class AuthService {
         do {
             try Auth.auth().signOut()
         } catch {
-            print(">>> Error signing out: \(error)")
+            alertService.pushAlert(.error, "There was an issue signing you out. Please try again.")
+            debugPrint("Error signing out: \(error)")
         }
     }
     

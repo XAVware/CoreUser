@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-
 struct LoginView: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var vm: AuthViewClusterModel
+    @EnvironmentObject var vm: AuthViewModel
     
     @Binding private var email: String
     @State private var password = ""
@@ -19,6 +18,8 @@ struct LoginView: View {
     @FocusState private var focusField: FocusText?
     enum FocusText { case email, password }
         
+    @State var loginRequired: Bool = false
+    
     init(email: Binding<String>) {
         self._email = email
     }
@@ -46,58 +47,59 @@ struct LoginView: View {
                 
                 HStack {
                     Spacer()
-                    Button {
-                        vm.currentState = .forgotPassword
-                    } label: {
-                        Text("Forgot Password?")
-                            .padding(.horizontal)
-                    }
+                    Button("Forgot Password?", action: forgotPasswordTapped)
+                        .padding(.horizontal)
                 } //: HStack
                 .padding(.vertical, 8)
                 
             } //: VStack
             .padding(.vertical)
             
-            Button {
-                Task {
-                    try await vm.login(withEmail: email, password: password)
-                }
-            } label: {
-                Text("Log In")
-                    .modifier(PrimaryButtonMod())
-            }
-            .padding(.vertical)
+            Button("Log In", action: loginTapped)
+                .modifier(PrimaryButtonMod())
+                .padding(.vertical)
+                .ignoresSafeArea(.keyboard)
             
             Spacer()
             
             Divider()
             
-            Button {
-                vm.currentState = .signUpEmail
-            } label: {
-                Text("Create an account")
-                    .ignoresSafeArea(.keyboard)
-            }
+            Button("Create an account", action: createAccountTapped)
+                .ignoresSafeArea(.keyboard)
         } //: VStack
         .padding()
         .navigationTitle("Sign in")
         .tint(.accent)
-        // If you want to making logging in optional:
-//        .toolbar(content: {
-//            ToolbarItem(placement: .topBarLeading) {
-//                Button("", systemImage: "xmark") {
-//                    dismiss()
-//                }
-//            }
-//        })
+        .toolbar { toolbarContent }
     } //: Body
+    
+    @ToolbarContentBuilder private var toolbarContent: some ToolbarContent {
+        if loginRequired {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("", systemImage: "xmark") {
+                    dismiss()
+                }
+            }
+        }
+    }
+    
+    private func loginTapped() {
+        Task {
+            await vm.continueTapped(email: email, passwordSet: [password])
+        }
+    }
+    
+    private func createAccountTapped() {
+        vm.changeState(to: .signUpEmail)
+    }
+    
+    private func forgotPasswordTapped() {
+        vm.changeState(to: .forgotPassword)
+    }
 }
 
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView(email: .constant(""))
-            .environmentObject(AuthViewClusterModel())
-            .padding()
-    }
+#Preview {
+    LoginView(email: .constant(""))
+        .environmentObject(AuthViewModel())
+        .padding()
 }

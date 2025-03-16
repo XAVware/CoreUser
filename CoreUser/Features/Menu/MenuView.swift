@@ -8,8 +8,6 @@
 import SwiftUI
 import FirebaseAuth
 
-
-
 struct MenuView: View {
     @StateObject private var vm: MenuViewModel = MenuViewModel()
     @Environment(NavigationService.self) var navigationService
