@@ -51,6 +51,8 @@
 		940C96BE2BFD494100A0BEAF /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96BD2BFD494100A0BEAF /* OnboardingView.swift */; };
 		940C96C02BFD4A4200A0BEAF /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96BF2BFD4A4200A0BEAF /* MenuView.swift */; };
 		946DAC0E2D8741540021ED9D /* ReauthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DAC0D2D8741540021ED9D /* ReauthenticationView.swift */; };
+		946DAD0D2D877FF00021ED9D /* boing-pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 946DAD0C2D877FF00021ED9D /* boing-pop.wav */; };
+		946DAD0F2D8780C00021ED9D /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DAD0E2D8780C00021ED9D /* SoundService.swift */; };
 		94FA6CE62C6EDCF9001D3CA8 /* FireImpArchitecture.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 94FA6CE52C6EDCF9001D3CA8 /* FireImpArchitecture.pdf */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,8 @@
 		940C96BD2BFD494100A0BEAF /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		940C96BF2BFD4A4200A0BEAF /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		946DAC0D2D8741540021ED9D /* ReauthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReauthenticationView.swift; sourceTree = "<group>"; };
+		946DAD0C2D877FF00021ED9D /* boing-pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "boing-pop.wav"; sourceTree = "<group>"; };
+		946DAD0E2D8780C00021ED9D /* SoundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundService.swift; sourceTree = "<group>"; };
 		94FA6CE52C6EDCF9001D3CA8 /* FireImpArchitecture.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FireImpArchitecture.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,7 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				940C96422BFD40E600A0BEAF /* CoreUserApp.swift */,
-				940C96462BFD40E700A0BEAF /* Assets.xcassets */,
+				946DAD0B2D877F890021ED9D /* Resources */,
 				94FA6CDD2C6DACFF001D3CA8 /* Core */,
 				940C96CD2BFD596C00A0BEAF /* Features */,
 				940C96C52BFD511C00A0BEAF /* Model */,
@@ -224,6 +228,7 @@
 		940C96C82BFD562700A0BEAF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				946DAD0E2D8780C00021ED9D /* SoundService.swift */,
 				9405E97B2D86550800046B1A /* AlertService.swift */,
 				940C96622BFD426300A0BEAF /* AuthService.swift */,
 				940C96532BFD426300A0BEAF /* CloudDataService.swift */,
@@ -258,6 +263,15 @@
 				940C96542BFD426300A0BEAF /* RootView.swift */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		946DAD0B2D877F890021ED9D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				946DAD0C2D877FF00021ED9D /* boing-pop.wav */,
+				940C96462BFD40E700A0BEAF /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		94FA6CDD2C6DACFF001D3CA8 /* Core */ = {
@@ -346,6 +360,7 @@
 				940C964A2BFD40E700A0BEAF /* Preview Assets.xcassets in Resources */,
 				940C96472BFD40E700A0BEAF /* Assets.xcassets in Resources */,
 				94FA6CE62C6EDCF9001D3CA8 /* FireImpArchitecture.pdf in Resources */,
+				946DAD0D2D877FF00021ED9D /* boing-pop.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +373,7 @@
 			files = (
 				940C96642BFD426300A0BEAF /* TaskManager.swift in Sources */,
 				940C96432BFD40E600A0BEAF /* CoreUserApp.swift in Sources */,
+				946DAD0F2D8780C00021ED9D /* SoundService.swift in Sources */,
 				940C96B82BFD477900A0BEAF /* AlertView.swift in Sources */,
 				9405EA522D86994B00046B1A /* MenuViewModel.swift in Sources */,
 				940C96BC2BFD47F500A0BEAF /* SubViewStyleMod.swift in Sources */,

@@ -31,7 +31,7 @@ struct EditDisplayNameView: View {
             
             Button {
                 Task {
-                    try await vm.updateDisplayName(to: displayName)
+                    await vm.updateDisplayName(to: displayName)
                 }
             } label: {
                 Text("Save")

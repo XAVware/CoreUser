@@ -1,6 +1,6 @@
 //
 //  UserManager.swift
-//  AuthSkeleton
+//  CoreUser
 //
 //  Created by Ryan Smetana on 1/27/25.
 //

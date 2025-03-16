@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct SettingsView: View {
     @State var vm: SettingsViewModel = SettingsViewModel()
     
@@ -16,7 +14,7 @@ struct SettingsView: View {
         Form {
             Section("Feedback") {
                 Toggle("Sound", isOn: $vm.soundOn)
-                Toggle("Haptics", isOn: $vm.hapticsOn)
+//                Toggle("Haptics", isOn: $vm.hapticsOn)
             } //: Section
             
             Section {
@@ -29,6 +27,7 @@ struct SettingsView: View {
                 Button("Test Settings") {
                     if SettingsManager.shared.bool(for: .soundEnabled) {
                         print("Play sound")
+                        SoundService.shared.playSound(.buttonTap)
                     }
                 }
             }

@@ -54,7 +54,7 @@ struct ReauthenticationView: View {
     
     private func loginTapped() {
         Task {
-            let success = try await vm.reauthenticate(withEmail: user.email, password: password)
+            let success = await vm.reauthenticate(withEmail: user.email, password: password)
             if success {
                 onSucces()
                 dismiss()

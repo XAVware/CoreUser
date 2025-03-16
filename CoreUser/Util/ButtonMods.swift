@@ -1,6 +1,6 @@
 //
 //  RoundedButtonMod.swift
-//  InventoryX
+//  CoreUser
 //
 //  Created by Smetana, Ryan on 4/24/23.
 //

@@ -1,6 +1,6 @@
 //
 //  ProfileView.swift
-//  uParker-SwiftUI
+//  CoreUser
 //
 //  Created by Smetana, Ryan on 2/7/23.
 //
@@ -62,7 +62,7 @@ struct ProfileView: View {
             if let user = user {
                 ReauthenticationView(vm: self.vm, user: user) {
                     Task {
-                        try await vm.updateEmail(to: email)
+                        await vm.updateEmail(to: email)
                     }
                 }
             } else {
@@ -76,7 +76,7 @@ struct ProfileView: View {
     
     private func changeDisplayNameTapped() {
         Task {
-            try await vm.updateDisplayName(to: displayName)
+            await vm.updateDisplayName(to: displayName)
         }
     }
     

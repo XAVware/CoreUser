@@ -18,7 +18,7 @@ Includes:
 
 ## Get Started
 1. Create a new project in Firebase and follow the setup instructions. 
-2. Add the GoogleService plist file to the root, /CoreUser folder.
-3. Enable Authentication with Email
-4. Enable Firestore
+    - Enable Firebase Authentication with Email/Password
+    - Enable Firestore
+2. Once you add the GoogleService plist file to the root of the project you'll be able to use the app as you'd expect.
 

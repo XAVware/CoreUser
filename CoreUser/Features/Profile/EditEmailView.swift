@@ -17,7 +17,6 @@ struct EditEmailView: View {
     
     var body: some View {
         VStack(spacing: 16) {  
-//            Spacer()
             
             ThemeField(placeholder: "Email", boundTo: $email, iconName: "envelope")
                 .keyboardType(.emailAddress)
@@ -32,7 +31,7 @@ struct EditEmailView: View {
             
             Button {
                 Task {
-                    try await vm.updateEmail(to: email)
+                    await vm.updateEmail(to: email)
                 }
             } label: {
                 Text("Save")
