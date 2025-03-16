@@ -5,7 +5,7 @@
 //  Created by Ryan Smetana on 2/27/24.
 //
 
-import Firebase
+import FirebaseFirestore
 
 enum UserDocumentKey: String, Hashable {
     case email = "email"
@@ -21,7 +21,7 @@ final class CloudDataService {
     private let db = Firestore.firestore()
     
     func createUserDoc(newUser: User) async throws {
-//        try userCollection.document(newUser.uid).setData(from: newUser)
+        try userCollection.document(newUser.uid).setData(from: newUser)
     }
 
     func updateUserData(localUser: User) async throws {
@@ -38,11 +38,11 @@ final class CloudDataService {
     
     func syncUser(localUser: User) async throws {
         do {
-//            let dbUser = try await userCollection.document(localUser.uid).getDocument(as: User.self)
-//            if localUser.email != dbUser.email || localUser.emailVerified != dbUser.emailVerified || localUser.displayName != dbUser.displayName {
-//                debugPrint(">>> Database document out of sync. Updating now...")
-//                try await updateUserData(localUser: localUser)
-//            }
+            let dbUser = try await userCollection.document(localUser.uid).getDocument(as: User.self)
+            if localUser.email != dbUser.email || localUser.emailVerified != dbUser.emailVerified || localUser.displayName != dbUser.displayName {
+                debugPrint(">>> Database document out of sync. Updating now...")
+                try await updateUserData(localUser: localUser)
+            }
         } catch let DecodingError.valueNotFound(_, context) where context.codingPath.isEmpty {
             print("User document not found in Firestore. Creating new document...")
             try await createUserDoc(newUser: localUser)
