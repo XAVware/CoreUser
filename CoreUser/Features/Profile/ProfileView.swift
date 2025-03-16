@@ -9,132 +9,80 @@ import SwiftUI
 import Combine
 
 struct ProfileView: View {
+    @Environment(NavigationService.self) var navigationService
     @StateObject var vm: ProfileViewModel = ProfileViewModel()
     
     @State var user: User?
-    @Environment(NavigationService.self) var navigationService
     
-    var navTitleText: String {
-        switch vm.currentState {
-        case .viewProfile:      return "Profile"
-        case .editDisplayName:  return "Edit Display Name"
-        case .editEmail:        return "Edit Email"
-        }
-    }
+    @State var displayName: String = ""
+    @State var email: String = ""
+    @State var emailIsVerified = false
+    
+    @State var isShowingLogin: Bool = false
     
     var body: some View {
-        VStack {
-            switch vm.currentState {
-            case .viewProfile:
-                profileView
-                
-            case .editDisplayName:
-                EditDisplayNameView()
-                    .environmentObject(vm)
-                
-            case .editEmail:
-                EditEmailView()
-                    .environmentObject(vm)
-                    .padding()
+        List {
+            Section("Display Name") {
+                HStack {
+                    TextField("Display name", text: $displayName)
+                    Button("Change", action: changeDisplayNameTapped)
+                } //: HStack
+            } //: Section
+            
+            Section("Email") {
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
+                        TextField("Email", text: $email)
+                        Button("Change", action: changeEmailTapped)
+                            .disabled(email == user?.email)
+                    } //: HStack
+                    
+                    HStack(spacing: 6) {
+                        Image(systemName: vm.user?.emailVerified == true ? "checkmark.circle.fill" : "slash.circle")
+                        Text(vm.user?.emailVerified == true ? "Verified" : "Not Verified")
+                    } //: HStack
+                    .font(.caption2)
+                    .foregroundStyle(vm.user?.emailVerified == true ? .green : .gray)
+                } //: VStack
+            } //: Section
+        } //: List
+        .onAppear {
+            if let user = vm.user {
+                self.displayName = user.displayName ?? ""
+                self.email = user.email
             }
-            Spacer()
-        } //: VStack
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .navigationTitle("Profile")
         .background(.bg)
-        .navigationTitle(navTitleText)
-        .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.large)
-        .toolbar() {
-            if vm.currentState == .viewProfile {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        navigationService.pop()
-                    } label: {
-                        Image(systemName: "chevron.left")
-                        Text("Back")
-                    } //: Button
-                    .foregroundStyle(.accent)
-                    .opacity(0.8)
-                }
-            }
-        } //: Toolbar
         .onReceive(vm.$user) { newUser in
             user = newUser
         }
-        .onReceive(vm.$reauthenticationRequired) { reqReauth in
-            if reqReauth == true {
-                vm.currentState = .viewProfile
-                navigationService.popToRoot()
-                AuthService.shared.signout()
+        .sheet(isPresented: $isShowingLogin) {
+            if let user = user {
+                ReauthenticationView(vm: self.vm, user: user) {
+                    Task {
+                        try await vm.updateEmail(to: email)
+                    }
+                }
+            } else {
+                Text("Something went wrong")
             }
         }
+        
+        
     } //: Body
     
-    private var profileView: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Display Name:")
-                .font(.headline)
-            
-            HStack {
-                
-                Text(vm.user?.displayName ?? "")
-                    .font(.headline)
-                    .bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Button {
-                    vm.changeView(to: .editDisplayName)
-                } label: {
-                    Image(systemName: "plus")
-                    Text("Add")
-                }
-                .opacity(0.6)
-                
-            } //: HStack
-                
-            Divider()
-            
-            HStack {
-                Text("Email:")
-                    .font(.headline)
-                
-                Spacer()
-                
-                HStack {
-                    Image(systemName: vm.user?.emailVerified == true ? "checkmark.circle.fill" : "slash.circle")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 12)
-                    
-                    Text(vm.user?.emailVerified == true ? "Verified" : "Not Verified")
-                        .font(.caption)
-                } //: HStack
-                .foregroundStyle(vm.user?.emailVerified == true ? .green : .gray)
-                
-            } //: HStack
-            
-            HStack {
-                Text(verbatim: vm.user?.email ?? "")
-                    .font(.headline)
-                    .bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Button {
-                    vm.changeView(to: .editEmail)
-                } label: {
-                    Text("Edit")
-                        .font(.callout)
-                        .fontWeight(.light)
-                }
-            } //: HStack
-        } //: VStack
-        .padding()
-        .modifier(SubViewStyleMod())
-        .foregroundStyle(.black)
-        
-    } //: Profile View
     
+    private func changeDisplayNameTapped() {
+        Task {
+            try await vm.updateDisplayName(to: displayName)
+        }
+    }
+    
+    private func changeEmailTapped() {
+        self.isShowingLogin.toggle()
+    }
 }
 
 #Preview {

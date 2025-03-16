@@ -40,7 +40,7 @@ struct EditEmailView: View {
             }
             
             Button {
-                vm.changeView(to: .viewProfile)
+//                vm.changeView(to: .viewProfile)
             } label: {
                 Text("Cancel")
                     .underline()

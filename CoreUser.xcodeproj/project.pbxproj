@@ -50,6 +50,7 @@
 		940C96BC2BFD47F500A0BEAF /* SubViewStyleMod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96BB2BFD47F500A0BEAF /* SubViewStyleMod.swift */; };
 		940C96BE2BFD494100A0BEAF /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96BD2BFD494100A0BEAF /* OnboardingView.swift */; };
 		940C96C02BFD4A4200A0BEAF /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96BF2BFD4A4200A0BEAF /* MenuView.swift */; };
+		946DAC0E2D8741540021ED9D /* ReauthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DAC0D2D8741540021ED9D /* ReauthenticationView.swift */; };
 		94FA6CE62C6EDCF9001D3CA8 /* FireImpArchitecture.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 94FA6CE52C6EDCF9001D3CA8 /* FireImpArchitecture.pdf */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		940C96BB2BFD47F500A0BEAF /* SubViewStyleMod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewStyleMod.swift; sourceTree = "<group>"; };
 		940C96BD2BFD494100A0BEAF /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		940C96BF2BFD4A4200A0BEAF /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		946DAC0D2D8741540021ED9D /* ReauthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReauthenticationView.swift; sourceTree = "<group>"; };
 		94FA6CE52C6EDCF9001D3CA8 /* FireImpArchitecture.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FireImpArchitecture.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +205,7 @@
 				940C96582BFD426300A0BEAF /* EditDisplayNameView.swift */,
 				940C96592BFD426300A0BEAF /* EditEmailView.swift */,
 				940C965A2BFD426300A0BEAF /* ProfileView.swift */,
+				946DAC0D2D8741540021ED9D /* ReauthenticationView.swift */,
 				940C965B2BFD426300A0BEAF /* ProfileViewModel.swift */,
 			);
 			path = Profile;
@@ -360,6 +363,7 @@
 				940C96BC2BFD47F500A0BEAF /* SubViewStyleMod.swift in Sources */,
 				940C96C02BFD4A4200A0BEAF /* MenuView.swift in Sources */,
 				940C966C2BFD426300A0BEAF /* EditEmailView.swift in Sources */,
+				946DAC0E2D8741540021ED9D /* ReauthenticationView.swift in Sources */,
 				9405EA502D86990400046B1A /* OnboardingViewModel.swift in Sources */,
 				9405EA542D86996800046B1A /* SettingsViewModel.swift in Sources */,
 				940C96662BFD426300A0BEAF /* CloudDataService.swift in Sources */,
