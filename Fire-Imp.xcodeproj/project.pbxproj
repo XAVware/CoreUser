@@ -13,6 +13,7 @@
 		9405E97E2D86556300046B1A /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9405E97D2D86556300046B1A /* AlertType.swift */; };
 		9405E9812D86589300046B1A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9405E9802D86589300046B1A /* FirebaseAuth */; };
 		9405E9832D86589300046B1A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9405E9822D86589300046B1A /* FirebaseFirestore */; };
+		9405E9992D865F5700046B1A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9405E9982D865F5700046B1A /* .gitignore */; };
 		940C96432BFD40E600A0BEAF /* Fire_ImpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96422BFD40E600A0BEAF /* Fire_ImpApp.swift */; };
 		940C96472BFD40E700A0BEAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 940C96462BFD40E700A0BEAF /* Assets.xcassets */; };
 		940C964A2BFD40E700A0BEAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 940C96492BFD40E700A0BEAF /* Preview Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		9405E96F2D864EE800046B1A /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
 		9405E97B2D86550800046B1A /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		9405E97D2D86556300046B1A /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
+		9405E9982D865F5700046B1A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		940C963F2BFD40E600A0BEAF /* Fire-Imp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fire-Imp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		940C96422BFD40E600A0BEAF /* Fire_ImpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fire_ImpApp.swift; sourceTree = "<group>"; };
 		940C96462BFD40E700A0BEAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		940C96362BFD40E600A0BEAF = {
 			isa = PBXGroup;
 			children = (
+				9405E9982D865F5700046B1A /* .gitignore */,
 				940C96502BFD410100A0BEAF /* README.md */,
 				94FA6CE52C6EDCF9001D3CA8 /* FireImpArchitecture.pdf */,
 				940C96412BFD40E600A0BEAF /* Fire-Imp */,
@@ -295,6 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9405E9992D865F5700046B1A /* .gitignore in Resources */,
 				940C964A2BFD40E700A0BEAF /* Preview Assets.xcassets in Resources */,
 				940C96472BFD40E700A0BEAF /* Assets.xcassets in Resources */,
 				94FA6CE62C6EDCF9001D3CA8 /* FireImpArchitecture.pdf in Resources */,
