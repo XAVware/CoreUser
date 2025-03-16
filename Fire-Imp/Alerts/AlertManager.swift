@@ -7,8 +7,12 @@
 
 import SwiftUI
 
-protocol AlertManager {
-    @MainActor var alert: AlertModel? { get set }
-    func removeAlert()
-//    func pushHaptic(type: HapticPattern)
+@MainActor
+protocol AlertManaging: ObservableObject {
+    var currentAlert: AlertModel? { get }
+    var alertPublisher: Published<AlertModel?>.Publisher { get }
+    
+    func pushAlert(_ alert: AlertModel)
+    func removeCurrentAlert()
+    func removeAllAlerts()
 }

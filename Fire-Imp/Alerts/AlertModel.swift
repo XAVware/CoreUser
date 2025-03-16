@@ -7,30 +7,23 @@
 
 import SwiftUI
 
-
-struct AlertModel: Equatable {
-    enum AlertType { case error, success }
+struct AlertModel: Identifiable, Equatable {
+    let id: UUID = UUID()
     let type: AlertType
+    let title: String?
     let message: String
+    let dismissible: Bool
+    let priority: Int
     
-    var title: String {
-        return switch self.type {
-        case .error:    "Error"
-        case .success:  "Success"
-        }
-    }
-    
-    var iconName: String {
-        return switch self.type {
-        case .error:    "exclamationmark.triangle.fill"
-        case .success:  "checkmark.circle"
-        }
-    }
-    
-    var bgColor: Color {
-        return switch self.type {
-        case .error:    Color("ErrorAlertColor")
-        case .success:  Color("SuccessAlertColor")
-        }
+    init(type: AlertType,
+         message: String,
+         title: String? = nil,
+         dismissible: Bool = true,
+         priority: Int = 0) {
+        self.type = type
+        self.message = message
+        self.title = title
+        self.dismissible = dismissible
+        self.priority = priority
     }
 }

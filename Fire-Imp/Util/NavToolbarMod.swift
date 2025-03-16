@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct NavToolbarMod: ViewModifier {
-    @Binding var navPath: [ViewPath]
+    @Binding var navPath: [NavPath]
     let navigationTitle: String
     let displayMode: NavigationBarItem.TitleDisplayMode
     
-    init(_ title: String, navPath: Binding<[ViewPath]>, displayMode: NavigationBarItem.TitleDisplayMode = .large) {
+    init(_ title: String, navPath: Binding<[NavPath]>, displayMode: NavigationBarItem.TitleDisplayMode = .large) {
         _navPath = navPath
         navigationTitle = title
         self.displayMode = displayMode

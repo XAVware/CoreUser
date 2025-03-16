@@ -10,9 +10,9 @@ import Combine
 
 struct ProfileView: View {
     @StateObject var vm: ProfileViewModel = ProfileViewModel()
-    @Binding var navPath: [ViewPath]
     
     @State var user: User?
+    @Environment(NavigationService.self) var navigationService
     
     var navTitleText: String {
         switch vm.currentState {
@@ -49,7 +49,7 @@ struct ProfileView: View {
             if vm.currentState == .viewProfile {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        navPath.removeLast()
+                        navigationService.pop()
                     } label: {
                         Image(systemName: "chevron.left")
                         Text("Back")
@@ -65,7 +65,7 @@ struct ProfileView: View {
         .onReceive(vm.$reauthenticationRequired) { reqReauth in
             if reqReauth == true {
                 vm.currentState = .viewProfile
-                navPath.removeAll()
+                navigationService.popToRoot()
                 AuthService.shared.signout()
             }
         }
@@ -137,11 +137,9 @@ struct ProfileView: View {
     
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    @State static var p: [ViewPath] =  []
-    static var previews: some View {
-        NavigationStack {
-            ProfileView(navPath: $p)
-        }
+#Preview {
+    NavigationStack {
+        ProfileView()
     }
 }
+

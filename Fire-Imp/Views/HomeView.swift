@@ -6,61 +6,41 @@
 //
 
 import SwiftUI
-//import Firebase
-
-@MainActor class HomeViewModel: ObservableObject {
-    @Published var navPath: [ViewPath] = []
-
-    func pushView(_ viewPath: ViewPath) {
-        navPath.append(viewPath)
-    }
-}
 
 struct HomeView: View {
-    @StateObject var ENV = EnvironmentManager.shared
-    @StateObject var vm = HomeViewModel()
+    @Environment(NavigationService.self) var navigationService
     
     var body: some View {
-        Group {
-            if ENV.isOnboarding == false {
-                homePage
-            } else {
-                LoadingView()
-            }
-        }
+        @Bindable var navigationService = navigationService
+        NavigationStack(path: $navigationService.path) {
+            HomeView()
+                .navigationDestination(for: NavPath.self, destination: { getDestination(for: $0) })
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Menu", systemImage: "line.horizontal.3") {
+                            navigationService.push(.menuView)
+                        }
+                        .buttonStyle(.borderless)
+                        .labelStyle(.iconOnly)
+                    }
+                }
+                .navigationTitle("Home")
+        } //: Navigation Stack
         .background(.bg)
         .defaultAppStorage(.standard)
-        .sheet(isPresented: $ENV.isOnboarding) {
-            OnboardingView()
-        }
     } //: Body
     
-    private var homePage: some View {
-        NavigationStack(path: $vm.navPath) {
-            VStack {
-                Button {
-                    vm.pushView(.menuView)
-                } label: {
-                    Text("Open Menu")
-                }
-                .buttonStyle(BorderedProminentButtonStyle())
-            } //: VStack
-            .navigationTitle("Home")
-            .navigationDestination(for: ViewPath.self) { view in
-                switch view {
-                case .menuView:                     MenuView(navPath: $vm.navPath)
-                case .profileView:                  ProfileView(navPath: $vm.navPath)
-                default: Text("Error")
-                }
-            } //: Navigation Destination
-        } //: Navigation Stack
-    } //: Content
-    
+    @ViewBuilder
+    func getDestination(for path: NavPath) -> some View {
+        switch path {
+        case .menuView: MenuView()
+        case .profileView: ProfileView()
+        default: Text("Oops, something went wrong. Please close the app and try again.")
+        }
+    }
     
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
+#Preview {
+    HomeView()
 }

@@ -36,10 +36,10 @@ struct ResetPasswordView: View {
             Spacer()
                         
             Button {
-                UIFeedbackService.shared.startLoading()
+                TaskManager.shared.startLoading()
                 Task {
                     try await vm.sendResetPasswordEmail(to: email)
-                    UIFeedbackService.shared.stopLoading()
+                    TaskManager.shared.stopLoading()
                 }
             } label: {
                 Text("Send Reset Link")

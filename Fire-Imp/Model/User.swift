@@ -5,8 +5,7 @@
 //  Created by Ryan Smetana on 2/27/24.
 //
 
-import FirebaseFirestoreSwift
-import Firebase
+import Foundation
 
 struct User: Codable {
     let uid: String

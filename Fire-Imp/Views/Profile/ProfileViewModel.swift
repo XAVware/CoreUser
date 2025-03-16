@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 
-// TODO: Display UI TaskFeedback -- Loading
 @MainActor class ProfileViewModel: ObservableObject {
     enum ProfileState { case viewProfile, editDisplayName, editEmail }
     var cancellables = Set<AnyCancellable>()
@@ -21,7 +20,7 @@ import Combine
     }
     
     func setupSubscribers() {
-        AuthService.shared.$user.sink { [weak self] user in
+        UserManager.shared.$currentUser.sink { [weak self] user in
             self?.user = user
         }.store(in: &cancellables)
     }
@@ -31,16 +30,21 @@ import Combine
     }
     
     func updateDisplayName(to name: String) async throws {
-        UIFeedbackService.shared.startLoading()
         try await AuthService.shared.updateDisplayName(to: name)
         debugPrint("DEBUG: Finished updating display name.")
-        changeView(to: .viewProfile)
     }
         
     func updateEmail(to email: String) async throws {
-        UIFeedbackService.shared.startLoading()
-        try await AuthService.shared.updateEmail(to: email)
-        debugPrint("DEBUG: Email verification sent. Requiring reauthentication...")
-        reauthenticationRequired = true
+        do {
+            try await AuthService.shared.updateEmail(to: email)
+            debugPrint("DEBUG: Email verification sent. ")
+        } catch {
+            print("Error updating email: \(error)")
+        }
+    }
+    
+    func reauthenticate(withEmail email: String, password: String) async throws -> Bool {
+        try await AuthService.shared.login(withEmail: email, password: password)
+        return true
     }
 }

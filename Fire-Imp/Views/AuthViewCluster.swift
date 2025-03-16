@@ -12,22 +12,22 @@ class AuthViewClusterModel: ObservableObject {
     @Published var currentState: AuthState = .loginEmail
     
     func createUser(withEmail email: String, password: String) async throws {
-        await UIFeedbackService.shared.startLoading()
+        await TaskManager.shared.startLoading()
         try await AuthService.shared.createUser(email: email, password: password)
     }
     
     func login(withEmail email: String, password: String) async throws {
-        await UIFeedbackService.shared.startLoading()
+        await TaskManager.shared.startLoading()
         try await AuthService.shared.login(withEmail: email, password: password)
     }
      
     func sendResetPasswordEmail(to email: String) async throws {
-        await UIFeedbackService.shared.startLoading()
+        await TaskManager.shared.startLoading()
         try await AuthService.shared.sendResetPasswordLink(toEmail: email)
     }
 }
 
-/// UIFeedbackService --
+/// TaskManager --
 /// If the view that is overlaying the alert is presented in a sheet, `.ignoresSafeArea(.all)` needs to be added to the AlertView, like this:
 ///
 /// `.overlay(taskFeedbackService.alert != nil ? AlertView(alert: taskFeedbackService.alert!).ignoresSafeArea(.all) : nil, alignment: .top)`

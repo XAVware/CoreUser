@@ -8,116 +8,72 @@
 import Foundation
 import FirebaseAuth
 
-class AuthService {
-    @Published var user: User?
+@MainActor
+final class AuthService {
+    @Published private(set) var user: FirebaseAuth.User?
     static let shared = AuthService()
     
+    private let alertService: AlertService
+    
     init() {
-        refreshUser()
+        self.alertService = AlertService.shared
+        self.user = Auth.auth().currentUser
     }
     
-    @MainActor func login(withEmail email: String, password: String) async throws {
+    func login(withEmail email: String, password: String) async throws {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
-            self.user = try await CloudDataService.handleLogin(authUser: result.user)
+            self.user = result.user
         } catch {
-            UIFeedbackService.shared.showAlert(.error, authError(error).localizedDescription)
+            throw authError(error)
         }
-        UIFeedbackService.shared.stopLoading()
     }
     
-    
-    @MainActor func createUser(email: String, password: String) async throws {
+    func createUser(email: String, password: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            
-            let newUser = User(uid: result.user.uid,
-                               email: result.user.email ?? "ERR",
-                               displayName: result.user.displayName,
-                               dateCreated: result.user.metadata.creationDate ?? Date())
-            
-            try await CloudDataService.createUserDoc(newUser: newUser)
-            self.user = newUser
+            self.user = result.user
             try await result.user.sendEmailVerification()
-            
-            debugPrint(">>> User successfully saved to Firebase")
         } catch {
-            UIFeedbackService.shared.showAlert(.error, authError(error).localizedDescription)
-        }
-        UIFeedbackService.shared.stopLoading()
-    }
-    
-    
-    func refreshUser() {
-        if let authUser = Auth.auth().currentUser {
-            self.user = User(uid: authUser.uid,
-                             email: authUser.email ?? "ERR",
-                             displayName: authUser.displayName,
-                             dateCreated: authUser.metadata.creationDate ?? Date(),
-                             emailVerified: authUser.isEmailVerified)
-        } else {
-            self.user = nil
+            throw authError(error)
         }
     }
     
-    @MainActor func sendResetPasswordLink(toEmail email: String) async throws {
+    func sendResetPasswordLink(toEmail email: String) async throws {
         do {
             try await Auth.auth().sendPasswordReset(withEmail: email)
-            UIFeedbackService.shared.showAlert(.success, "Email sent. Please check your inbox.")
-        } catch {
-            UIFeedbackService.shared.showAlert(.error, authError(error).localizedDescription)
+            alertService.pushAlert(.success, "Email sent. Please check your inbox.")
+        }  catch {
+            throw authError(error)
         }
-        UIFeedbackService.shared.stopLoading()
     }
     
-    @MainActor func updateEmail(to email: String) async throws {
+    func updateEmail(to email: String) async throws {
         guard let authUser = Auth.auth().currentUser else { return }
         
         do {
             try await authUser.sendEmailVerification(beforeUpdatingEmail: email)
-            UIFeedbackService.shared.showAlert(.success, "Email sent. Please check your inbox.")
-            signout()
+            alertService.pushAlert(.success, "Verification email sent. Click the link in the email to verify.")
         } catch {
-            UIFeedbackService.shared.showAlert(.error, authError(error).localizedDescription)
-            print(">>> Other reauth error: \(authError(error).localizedDescription)")
+            throw authError(error)
         }
-        
-        UIFeedbackService.shared.stopLoading()
     }
     
-    @MainActor func updateDisplayName(to name: String) async throws {
+    func updateDisplayName(to name: String) async throws {
         guard let authUser = Auth.auth().currentUser else { return }
         do {
             let changeRequest = authUser.createProfileChangeRequest()
             changeRequest.displayName = name
             try await changeRequest.commitChanges()
-            
-            try await CloudDataService.updateDisplayName(uid: authUser.uid, newName: name)
+            self.user = authUser
         } catch {
-            UIFeedbackService.shared.showAlert(.error, authError(error).localizedDescription)
+            throw authError(error)
         }
-        refreshUser()
-        UIFeedbackService.shared.stopLoading()
     }
-    
-//    @MainActor
-//    func reauthenticateWithEmail(email: String, password: String) async throws {
-//        guard let currentUser = Auth.auth().currentUser else { return }
-//        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-//        
-//        do {
-//            debugPrint("DEBUG: Attempting to reauthenticate...")
-//            try await currentUser.reauthenticate(with: credential)
-//            debugPrint("DEBUG: Reauthentication successful.")
-//        } catch {
-//            TaskFeedbackService.shared.showAlert(.error, authError(error).localizedDescription)
-//        }
-//    }
     
     func signout() {
         do {
             try Auth.auth().signOut()
-            self.refreshUser()
         } catch {
             print(">>> Error signing out: \(error)")
         }

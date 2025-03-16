@@ -44,7 +44,7 @@ import AVFoundation
     }
     
     func finish() {
-        ENV.shared.toggleOnboarding()
+        UserManager.shared.finishOnboarding()
     }
     
     func nextTapped() {

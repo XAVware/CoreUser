@@ -7,67 +7,50 @@
 
 import Firebase
 
-class CloudDataService {
-    
-    enum UserDocumentKey: String, Hashable {
-        case email = "email"
-        case emailVerified = "emailVerified"
-        case displayname = "displayName"
-    }
-    
-    private static let userCollection = Firestore.firestore().collection("users")
+enum UserDocumentKey: String, Hashable {
+    case email = "email"
+    case emailVerified = "emailVerified"
+    case displayName = "displayName"
+}
+
+@MainActor
+final class CloudDataService {
+    private let userCollection = Firestore.firestore().collection("users")
     
     static let shared = CloudDataService()
+    private let db = Firestore.firestore()
     
-    static func createUserDoc(newUser: User) async throws {
-        try userCollection.document(newUser.uid).setData(from: newUser)
+    func createUserDoc(newUser: User) async throws {
+//        try userCollection.document(newUser.uid).setData(from: newUser)
     }
-    
-    static func fetchUser(withUid uid: String) async throws -> User {
-        let user = try await userCollection.document(uid).getDocument(as: User.self)
-        return user
-    }
-    
-    static func updateDisplayName(uid: String, newName: String) async throws {
-        try await userCollection.document(uid).updateData([
-            "displayName": newName
-        ])
-    }
-    
-    static func updateEmail(uid: String, newEmail: String) async throws {
-        try await userCollection.document(uid).updateData([
-            "email": newEmail
-        ])
-    }
-    
-    static func updateUserData(uid: String, data: [UserDocumentKey : Any]) async throws {
-        try await userCollection.document(uid).updateData(data)
-    }
-    
-    // displayName does not need to be checked or updated here because the database is immediately updated when the user changes it.
-    static func handleLogin(authUser: FirebaseAuth.User) async throws -> User {
-        let localUser = User(uid: authUser.uid,
-                             email: authUser.email ?? "Err",
-                             displayName: authUser.displayName,
-                             dateCreated: authUser.metadata.creationDate ?? Date(),
-                             emailVerified: authUser.isEmailVerified)
-        
-        let dbUser = try await fetchUser(withUid: localUser.uid)
-        
-        
-        if localUser.email != dbUser.email || localUser.emailVerified != dbUser.emailVerified {
-            debugPrint(">>> Database document out of sync. Updating now...")
-            let updatedData: [AnyHashable: Any] = [UserDocumentKey.email : localUser.email,
-                                                   UserDocumentKey.emailVerified : localUser.emailVerified]
-            try await userCollection.document(localUser.uid).updateData(updatedData)
-//            try await userCollection.document(localUser.uid).updateData([
-//                "email": localUser.email,
-//                "emailVerified": localUser.emailVerified
-//            ])
-            debugPrint("DEBUG: Finished updating user in Database.")
+
+    func updateUserData(localUser: User) async throws {
+        let data: [UserDocumentKey: Any] = [
+            UserDocumentKey.email: localUser.email,
+            UserDocumentKey.emailVerified: localUser.emailVerified,
+            UserDocumentKey.displayName: localUser.displayName ?? ""
+        ]
+        let sendableData = Dictionary(uniqueKeysWithValues: data.map { ($0.key.rawValue, $0.value) })
+        await MainActor.run {
+            userCollection.document(localUser.uid).updateData(sendableData)
         }
-        debugPrint("DEBUG: Returning user to AuthService.")
-        return localUser
+    }
+    
+    func syncUser(localUser: User) async throws {
+        do {
+//            let dbUser = try await userCollection.document(localUser.uid).getDocument(as: User.self)
+//            if localUser.email != dbUser.email || localUser.emailVerified != dbUser.emailVerified || localUser.displayName != dbUser.displayName {
+//                debugPrint(">>> Database document out of sync. Updating now...")
+//                try await updateUserData(localUser: localUser)
+//            }
+        } catch let DecodingError.valueNotFound(_, context) where context.codingPath.isEmpty {
+            print("User document not found in Firestore. Creating new document...")
+            try await createUserDoc(newUser: localUser)
+            debugPrint("DEBUG: User document created successfully in Firestore.")
+        } catch {
+            print("Unexpected error: \(error)")
+            throw error
+        }
     }
 }
 

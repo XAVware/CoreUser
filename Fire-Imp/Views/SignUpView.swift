@@ -21,10 +21,10 @@ struct SignUpView: View {
     }
     
     private func createUser() {
-        UIFeedbackService.shared.startLoading()
+        TaskManager.shared.startLoading()
         Task {
             try await vm.createUser(withEmail: email, password: password)
-            UIFeedbackService.shared.stopLoading()
+            TaskManager.shared.stopLoading()
         }
     }
     
