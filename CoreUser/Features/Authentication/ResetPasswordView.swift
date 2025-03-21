@@ -36,8 +36,7 @@ struct ResetPasswordView: View {
             Spacer()
                         
             Button("Send Reset Link", action: sendLinkTapped)
-                .modifier(PrimaryButtonMod())
-            
+                .buttonStyle(ThemeButtonStyle(prominence: .primary))            
             Spacer()
         } //: VStack
         .navigationBarBackButtonHidden(true)

@@ -35,8 +35,8 @@ struct EditEmailView: View {
                 }
             } label: {
                 Text("Save")
-                    .modifier(PrimaryButtonMod())
             }
+            .buttonStyle(ThemeButtonStyle(prominence: .primary))
             
             Button {
 //                vm.changeView(to: .viewProfile)

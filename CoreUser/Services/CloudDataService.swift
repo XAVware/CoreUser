@@ -7,12 +7,6 @@
 
 import FirebaseFirestore
 
-enum UserDocumentKey: String, Hashable {
-    case email = "email"
-    case emailVerified = "emailVerified"
-    case displayName = "displayName"
-}
-
 @MainActor
 final class CloudDataService {
     private let userCollection = Firestore.firestore().collection("users")

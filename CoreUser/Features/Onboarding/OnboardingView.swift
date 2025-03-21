@@ -37,9 +37,8 @@ struct OnboardingView: View {
                 vm.nextTapped()
             } label: {
                 Text("Request Access")
-                    .frame(maxWidth: .infinity)
             }
-            .modifier(PrimaryButtonMod())
+            .buttonStyle(ThemeButtonStyle(prominence: .primary))
             .padding()
             
             Button {

@@ -42,7 +42,6 @@
 		940C96A42BFD443F00A0BEAF /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96A02BFD443F00A0BEAF /* AlertManager.swift */; };
 		940C96A62BFD443F00A0BEAF /* ThemeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96A22BFD443F00A0BEAF /* ThemeField.swift */; };
 		940C96AA2BFD448B00A0BEAF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96A82BFD448B00A0BEAF /* User.swift */; };
-		940C96B02BFD45EB00A0BEAF /* ButtonMods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96AF2BFD45EB00A0BEAF /* ButtonMods.swift */; };
 		940C96B22BFD467E00A0BEAF /* NavPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96B12BFD467E00A0BEAF /* NavPath.swift */; };
 		940C96B72BFD477900A0BEAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96B52BFD477900A0BEAF /* HomeView.swift */; };
 		940C96B82BFD477900A0BEAF /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C96B62BFD477900A0BEAF /* AlertView.swift */; };
@@ -53,6 +52,9 @@
 		946DAC0E2D8741540021ED9D /* ReauthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DAC0D2D8741540021ED9D /* ReauthenticationView.swift */; };
 		946DAD0D2D877FF00021ED9D /* boing-pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 946DAD0C2D877FF00021ED9D /* boing-pop.wav */; };
 		946DAD0F2D8780C00021ED9D /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DAD0E2D8780C00021ED9D /* SoundService.swift */; };
+		94E53D472D8D0B84001E4F7A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 94E53D462D8D0B7F001E4F7A /* .gitignore */; };
+		94E53D532D8D0BBE001E4F7A /* ThemeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E53D522D8D0BBE001E4F7A /* ThemeButtonStyle.swift */; };
+		94E53D552D8D0D80001E4F7A /* UserDocumentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E53D542D8D0D80001E4F7A /* UserDocumentKey.swift */; };
 		94FA6CE62C6EDCF9001D3CA8 /* FireImpArchitecture.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 94FA6CE52C6EDCF9001D3CA8 /* FireImpArchitecture.pdf */; };
 /* End PBXBuildFile section */
 
@@ -92,7 +94,6 @@
 		940C96A02BFD443F00A0BEAF /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		940C96A22BFD443F00A0BEAF /* ThemeField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeField.swift; sourceTree = "<group>"; };
 		940C96A82BFD448B00A0BEAF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		940C96AF2BFD45EB00A0BEAF /* ButtonMods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonMods.swift; sourceTree = "<group>"; };
 		940C96B12BFD467E00A0BEAF /* NavPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavPath.swift; sourceTree = "<group>"; };
 		940C96B52BFD477900A0BEAF /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		940C96B62BFD477900A0BEAF /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -103,6 +104,9 @@
 		946DAC0D2D8741540021ED9D /* ReauthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReauthenticationView.swift; sourceTree = "<group>"; };
 		946DAD0C2D877FF00021ED9D /* boing-pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "boing-pop.wav"; sourceTree = "<group>"; };
 		946DAD0E2D8780C00021ED9D /* SoundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundService.swift; sourceTree = "<group>"; };
+		94E53D462D8D0B7F001E4F7A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		94E53D522D8D0BBE001E4F7A /* ThemeButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButtonStyle.swift; sourceTree = "<group>"; };
+		94E53D542D8D0D80001E4F7A /* UserDocumentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDocumentKey.swift; sourceTree = "<group>"; };
 		94FA6CE52C6EDCF9001D3CA8 /* FireImpArchitecture.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = FireImpArchitecture.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				940C96502BFD410100A0BEAF /* README.md */,
+				94E53D462D8D0B7F001E4F7A /* .gitignore */,
 				94FA6CE52C6EDCF9001D3CA8 /* FireImpArchitecture.pdf */,
 				940C96412BFD40E600A0BEAF /* CoreUser */,
 				940C96402BFD40E600A0BEAF /* Products */,
@@ -218,6 +223,7 @@
 		940C96C52BFD511C00A0BEAF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				94E53D542D8D0D80001E4F7A /* UserDocumentKey.swift */,
 				940C96552BFD426300A0BEAF /* AppError.swift */,
 				940C96B12BFD467E00A0BEAF /* NavPath.swift */,
 				940C96A82BFD448B00A0BEAF /* User.swift */,
@@ -286,7 +292,7 @@
 		94FA6CDE2C6DAD1C001D3CA8 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				940C96AF2BFD45EB00A0BEAF /* ButtonMods.swift */,
+				94E53D522D8D0BBE001E4F7A /* ThemeButtonStyle.swift */,
 				940C96BB2BFD47F500A0BEAF /* SubViewStyleMod.swift */,
 			);
 			path = Util;
@@ -357,6 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94E53D472D8D0B84001E4F7A /* .gitignore in Resources */,
 				940C964A2BFD40E700A0BEAF /* Preview Assets.xcassets in Resources */,
 				940C96472BFD40E700A0BEAF /* Assets.xcassets in Resources */,
 				94FA6CE62C6EDCF9001D3CA8 /* FireImpArchitecture.pdf in Resources */,
@@ -404,12 +411,13 @@
 				940C96712BFD426300A0BEAF /* ResetPasswordView.swift in Sources */,
 				9405E97C2D86550800046B1A /* AlertService.swift in Sources */,
 				940C96732BFD426300A0BEAF /* AuthService.swift in Sources */,
-				940C96B02BFD45EB00A0BEAF /* ButtonMods.swift in Sources */,
 				940C966D2BFD426300A0BEAF /* ProfileView.swift in Sources */,
 				940C96B22BFD467E00A0BEAF /* NavPath.swift in Sources */,
 				940C96A62BFD443F00A0BEAF /* ThemeField.swift in Sources */,
 				940C966B2BFD426300A0BEAF /* EditDisplayNameView.swift in Sources */,
+				94E53D552D8D0D80001E4F7A /* UserDocumentKey.swift in Sources */,
 				940C96AA2BFD448B00A0BEAF /* User.swift in Sources */,
+				94E53D532D8D0BBE001E4F7A /* ThemeButtonStyle.swift in Sources */,
 				940C96BA2BFD478B00A0BEAF /* LoadingView.swift in Sources */,
 				9405E97E2D86556300046B1A /* AlertType.swift in Sources */,
 			);

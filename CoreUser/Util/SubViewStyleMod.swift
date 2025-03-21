@@ -17,3 +17,14 @@ struct SubViewStyleMod: ViewModifier {
             )
     }
 }
+
+struct EmailFieldMod: ViewModifier {
+    @State var submitLabel: SubmitLabel = .next
+    func body(content: Content) -> some View {
+        content
+            .keyboardType(.emailAddress)
+            .autocorrectionDisabled()
+            .textInputAutocapitalization(.never)
+            .submitLabel(submitLabel)
+    }
+}

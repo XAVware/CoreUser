@@ -29,10 +29,7 @@ struct LoginView: View {
             
             VStack(spacing: 16) {
                 ThemeField(placeholder: "Email", boundTo: $email, iconName: "envelope")
-                    .keyboardType(.emailAddress)
-                    .autocorrectionDisabled()
-                    .textInputAutocapitalization(.never)
-                    .submitLabel(.next)
+                    .modifier(EmailFieldMod())
                     .focused($focusField, equals: .email)
                     .onTapGesture { focusField = .email }
                     .onSubmit { focusField = nil }
@@ -56,7 +53,7 @@ struct LoginView: View {
             .padding(.vertical)
             
             Button("Log In", action: loginTapped)
-                .modifier(PrimaryButtonMod())
+                .buttonStyle(ThemeButtonStyle(prominence: .primary))
                 .padding(.vertical)
                 .ignoresSafeArea(.keyboard)
             

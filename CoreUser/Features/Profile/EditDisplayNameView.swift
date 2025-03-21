@@ -35,10 +35,8 @@ struct EditDisplayNameView: View {
                 }
             } label: {
                 Text("Save")
-                    .frame(maxWidth: .infinity)
             }
-            .modifier(PrimaryButtonMod())
-            
+            .buttonStyle(ThemeButtonStyle(prominence: .primary))            
             Button {
 //                vm.changeView(to: .viewProfile)
             } label: {

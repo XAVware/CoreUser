@@ -25,10 +25,7 @@ struct SignUpView: View {
 
             VStack(spacing: 16) {
                 ThemeField(placeholder: "Email", boundTo: $email, iconName: "envelope")
-                    .keyboardType(.emailAddress)
-                    .autocorrectionDisabled()
-                    .textInputAutocapitalization(.never)
-                    .submitLabel(.next)
+                    .modifier(EmailFieldMod())
                     .focused($focusField, equals: .email)
                     .onTapGesture { focusField = .email }
                     .onSubmit {
@@ -56,8 +53,8 @@ struct SignUpView: View {
             .padding(.vertical)
             
             Button("Create Account", action: createUser)
-                .modifier(PrimaryButtonMod())
-
+                .buttonStyle(ThemeButtonStyle(prominence: .primary))
+            
             Spacer()
             
             Divider()

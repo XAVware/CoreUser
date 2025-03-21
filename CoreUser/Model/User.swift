@@ -14,6 +14,9 @@ struct User: Codable {
     let dateCreated: Date
     var emailVerified: Bool = false
     var finishedOnboarding: Bool = false
+    
+    var phoneNumber: String?
+    var phoneVerified: Bool = false
 }
 
 extension User: Hashable {
